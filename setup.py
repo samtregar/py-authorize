@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='fio-py-Authorize',
-    version='1.4.0.0',
+    version='1.4.0.1',
     author='Vincent Catalano, Fulfil.IO Inc',
     author_email='info@fulfil.io',
     url='https://github.com/fulfilio/py-authorize',
