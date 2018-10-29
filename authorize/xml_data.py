@@ -171,8 +171,10 @@ def create_payment(params={}):
     payment = E.Element('payment')
     # If a card_number key exists here, we know that we are dealing with a
     # credit card. Otherwise, it's a bank account.
-    if 'card_number' in params:
-        payment.append(create_card(params))
+    if 'credit_card' in params:
+        payment.append(create_card(params['credit_card']))
+    elif 'opaque_data' in params:
+        payment.append(create_opaque_data(params['opaque_data']))
     elif 'track_data' in params:
         payment.append(format_tracks(params))
     else:

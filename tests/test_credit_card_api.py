@@ -5,10 +5,12 @@ from unittest import TestCase
 
 CREDIT_CARD = {
     'customer_type': 'individual',
-    'card_number': '4111111111111111',
-    'card_code': '456',
-    'expiration_month': '04',
-    'expiration_year': '2014',
+    'credit_card': {
+        'card_number': '4111111111111111',
+        'card_code': '456',
+        'expiration_month': '04',
+        'expiration_year': '2014',
+    },
     'billing': {
         'first_name': 'Rob',
         'last_name': 'Oteron',
@@ -26,10 +28,12 @@ CREDIT_CARD = {
 # Update the credit card information except the card number
 UPDATE_CREDIT_CARD_INFO = {
     'customer_type': 'individual',
-    'card_number': '1111',
-    'card_code': '456',
-    'expiration_month': '04',
-    'expiration_year': '2014',
+    'credit_card': {
+        'card_number': '1111',
+        'card_code': '456',
+        'expiration_month': '04',
+        'expiration_year': '2014',
+    },
     'billing': {
         'first_name': 'Rob',
         'last_name': 'Oteron',

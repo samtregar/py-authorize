@@ -193,14 +193,32 @@ class CustomerTypeSchema(colander.MappingSchema):
                                         missing=colander.drop)
 
 
-class CreateCreditCardSchema(CreditCardSchema, CustomerTypeSchema):
+class CreateCreditCardSchema(CustomerTypeSchema):
     billing = AddressSchema(missing=colander.drop)
+    credit_card = CreditCardSchema(validator=CreditCardSchema.validator,
+                                   missing=colander.drop)
+    opaque_data = OpaqueDataSchema(validator=OpaqueDataSchema.validator,
+                                   missing=colander.drop)
+
+    @staticmethod
+    def validator(node, kw):
+        credit_card = kw.get('credit_card')
+        opaque_data = kw.get('opaque_data')
+        if not credit_card and not opaque_data:
+            raise colander.Invalid(
+                node, "You must provide at least credit_card or opaque_data")
 
 
-class UpdateCreditCardSchema(CreateCreditCardSchema):
+class MaskedCreditCardSchema(CreditCardSchema):
     card_number = colander.SchemaNode(colander.String(),
                                       validator=colander.Length(min=4),
                                       required=True)
+
+
+class UpdateCreditCardSchema(CustomerTypeSchema):
+    billing = AddressSchema(missing=colander.drop)
+    credit_card = MaskedCreditCardSchema(validator=CreditCardSchema.validator,
+                                         required=True)
 
 
 class ValidateCreditCardSchema(colander.MappingSchema):

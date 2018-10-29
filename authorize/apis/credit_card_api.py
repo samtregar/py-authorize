@@ -1,5 +1,6 @@
 from authorize.apis.payment_profile_api import PaymentProfileAPI
 from authorize.schemas import CreateCreditCardSchema
+from authorize.schemas import OpaqueDataSchema
 from authorize.schemas import UpdateCreditCardSchema
 from authorize.schemas import ValidateCreditCardSchema
 from authorize.xml_data import *
@@ -13,7 +14,8 @@ class CreditCardAPI(PaymentProfileAPI):
 
     def update(self, customer_id, payment_id, params={}):
         card = self._deserialize(UpdateCreditCardSchema(), params)
-        return self.api._make_call(self._update_request(customer_id, payment_id, card))
+        return self.api._make_call(
+            self._update_request(customer_id, payment_id, card))
 
     def validate(self, customer_id, payment_id, params={}):
         card = self._deserialize(ValidateCreditCardSchema(), params)
@@ -28,8 +30,9 @@ class CreditCardAPI(PaymentProfileAPI):
 
         # Issue 30: If only the last 4 digits of a credit card are provided,
         # add the additional XXXX character mask that is required.
-        if len(card['card_number']) == 4:
-          card['card_number'] = 'XXXX' + card['card_number']
+        card_number = card['credit_card']['card_number']
+        if len(card_number) == 4:
+            card['credit_card']['card_number'] = 'XXXX' + card_number
 
         return self._make_xml('updateCustomerPaymentProfileRequest', customer_id, payment_id, params=card)
 

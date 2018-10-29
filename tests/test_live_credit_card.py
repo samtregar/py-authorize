@@ -9,15 +9,19 @@ from nose.plugins.attrib import attr
 from unittest import TestCase
 
 CREDIT_CARD = {
-    'card_number': '4111111111111111',
-    'expiration_date': '04/{0}'.format(date.today().year + 1),
-    'card_code': '456',
+    'credit_card': {
+        'card_number': '4111111111111111',
+        'expiration_date': '04/{0}'.format(date.today().year + 1),
+        'card_code': '456',
+    }
 }
 
 FULL_CREDIT_CARD = {
-    'card_number': '4111111111111111',
-    'expiration_date': '04/{0}'.format(date.today().year + 1),
-    'card_code': '456',
+    'credit_card': {
+        'card_number': '4111111111111111',
+        'expiration_date': '04/{0}'.format(date.today().year + 1),
+        'card_code': '456',
+    },
     'billing': {
         'first_name': 'Rob',
         'last_name': 'Oteron',
@@ -33,27 +37,35 @@ FULL_CREDIT_CARD = {
 }
 
 UPDATE_CREDIT_CARD = {
-    'card_number': '5555555555554444',
-    'expiration_date': '04/{0}'.format(date.today().year + 1),
-    'card_code': '567',
+    'credit_card': {
+        'card_number': '5555555555554444',
+        'expiration_date': '04/{0}'.format(date.today().year + 1),
+        'card_code': '567',
+    }
 }
 
 UPDATE_CREDIT_CARD_WITH_MASK = {
-    'card_number': 'XXXX4444',
-    'expiration_date': '04/{0}'.format(date.today().year + 1),
-    'card_code': '567',
+    'credit_card': {
+        'card_number': 'XXXX4444',
+        'expiration_date': '04/{0}'.format(date.today().year + 1),
+        'card_code': '567',
+    }
 }
 
 UPDATE_CREDIT_CARD_WITHOUT_MASK = {
-    'card_number': '4444',
-    'expiration_date': '04/{0}'.format(date.today().year + 1),
-    'card_code': '567',
+    'credit_card': {
+        'card_number': '4444',
+        'expiration_date': '04/{0}'.format(date.today().year + 1),
+        'card_code': '567',
+    }
 }
 
 UPDATE_CREDIT_CARD_INVALID_MASK = {
-    'card_number': '1111',
-    'expiration_date': '04/{0}'.format(date.today().year + 1),
-    'card_code': '567',
+    'credit_card': {
+        'card_number': '1111',
+        'expiration_date': '04/{0}'.format(date.today().year + 1),
+        'card_code': '567',
+    }
 }
 
 PAYMENT_RESULT = {

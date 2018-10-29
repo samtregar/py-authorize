@@ -129,7 +129,7 @@ class RecurringAPI(BaseAPI):
 
         # Payment information
         if 'credit_card' in params:
-            subscription.append(create_payment(params['credit_card']))
+            subscription.append(create_payment(params))
         if 'bank_account' in params:
             subscription.append(create_payment(params['bank_account']))
         if 'profile' in params:
