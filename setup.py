@@ -2,11 +2,11 @@ from setuptools import setup
 
 
 setup(
-    name='Py-Authorize',
+    name='fio-py-Authorize',
     version='1.4.0.0',
-    author='Vincent Catalano',
-    author_email='vincent@vincentcatlano.com',
-    url='https://github.com/vcatalano/py-authorize',
+    author='Vincent Catalano, Fulfil.IO Inc',
+    author_email='info@fulfil.io',
+    url='https://github.com/fulfilio/py-authorize',
     download_url='',
     description="A full-featured Python API for Authorize.net's AIM, CIM, ARB and Reporting APIs.",
     long_description=__doc__,
