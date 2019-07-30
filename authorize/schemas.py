@@ -455,6 +455,8 @@ class UpdateRecurringSchema(colander.MappingSchema):
 
     credit_card = CreditCardSchema(validator=CreditCardSchema.validator,
                                    missing=colander.drop)
+    opaque_data = OpaqueDataSchema(validator=OpaqueDataSchema.validator,
+                                   missing=colander.drop)
     bank_account = BankAccountSchema(validator=BankAccountSchema.validator,
                                      missing=colander.drop)
     profile = ProfileSchema(missing=colander.drop)

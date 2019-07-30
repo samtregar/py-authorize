@@ -128,7 +128,7 @@ class RecurringAPI(BaseAPI):
             E.SubElement(subscription, 'trialAmount').text = quantize(params['trial_amount'])
 
         # Payment information
-        if 'credit_card' in params:
+        if 'credit_card' in params or 'opaque_data' in params:
             subscription.append(create_payment(params))
         if 'bank_account' in params:
             subscription.append(create_payment(params['bank_account']))
